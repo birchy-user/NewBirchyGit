@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    BirchyStore
+                    @lang('header.welcome')
                 </div>
 
                 <div class="links">
