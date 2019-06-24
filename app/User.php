@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username','name', 'surname', 'email', 'password',
     ];
 
     /**
@@ -38,4 +38,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Fetch the profile of a user
+
+    public function ProfileDesc()
+    {
+        return $this->hasOne(ProfileDesc::class);
+    }
 }

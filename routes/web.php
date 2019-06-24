@@ -16,11 +16,12 @@ Route::get('/', function()
     return view('welcome');
 });
 
-/*
-Route::get('/', function () {
+
+Route::get('/home', function () {
     return view('home');
 });
 
+/*
 Route::get('/about', function () {
     return view('about');
 });
@@ -31,4 +32,4 @@ Route::get('/contact', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
