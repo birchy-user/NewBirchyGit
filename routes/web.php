@@ -21,15 +21,14 @@ Route::get('/home', function () {
     return view('home');
 });
 
-/*
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});*/
-
 Auth::routes();
 
-Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile/show');   /// route to the {user}'s profile and shows the ID of the profile
+
+Route::get('/p/create', 'PostsController@create');     /// route to the creation of a new post
+Route::post('/p', 'PostsController@store');   /// route that redirects to the post method of the form (after the addition of a new post)
+
+
+Route::get('/p/{post}', 'PostsController@show');   /// when a user clicks on a post
+
+Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile/edit'); /// when a user edits his profile

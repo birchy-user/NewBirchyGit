@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfileDescsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateProfileDescsTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_descs', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('users_id'); // reference to the ID of the user
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->unsignedBigInteger('user_users_id');
+            $table->string('caption');
+            $table->string('image');
             $table->timestamps();
 
-            $table->index('users_id'); /// for foreign key
+            $table->index('user_users_id');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateProfileDescsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_descs');
+        Schema::dropIfExists('posts');
     }
 }

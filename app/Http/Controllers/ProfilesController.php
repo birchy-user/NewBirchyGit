@@ -10,9 +10,17 @@ class ProfilesController extends Controller
 {
     public function index($user)
     {
-        $user = User::find($user);
+        //dd($user);
+        $user = User::findOrFail($user); 
 
-        return view('home', [
+        return view('profiles/index', [ //passing in an array
+            'user' => $user,
+        ]);
+    }
+
+    public function edit(\App\User $user)
+    {
+        return view('profiles/edit', [
             'user' => $user,
         ]);
     }
