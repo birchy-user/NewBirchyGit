@@ -11,7 +11,7 @@
 
                 <div class="row">
                     <h3>
-                        Add a New Post (nahoy)
+                        Add a New Post
                     </h3>
                 </div>
 

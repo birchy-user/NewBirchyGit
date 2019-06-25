@@ -8,16 +8,22 @@
         </div>
 
         <div class="col-9 pt-3 pl-5">
-            <div><h2><?php echo Auth::user()->username; ?></h2></div> <!-- Returns the user's username -->
+            <div><h2><?php echo $user->username; ?></h2></div> <!-- Returns the user's username -->
             <div><strong> {{ $user->posts->count() }} </strong>Posts</div>  <!-- Returns the count of a user's posts -->
             <div class="pt-4">{{ $user->profile->title }}</div>
             <div class="pt-4">{{ $user->profile->description }}</div>
-            <div class="d-flex pt-3 pb-2">
-                <button><a href="/p/create">Add a post</a></button>             <!-- When a user clicks this link, it will redirect him to the create method of post -->
-            </div>
-            <div class="d-flex pt-3">
-                <button><a href="/profile/{{ $user->users_id }}/edit">Edit Profile</a></button>
-            </div>
+
+            @can('update', $user->profile)
+                <div class="d-flex pt-3 pb-2">
+                    <button><a href="/p/create">Add a post</a></button>             <!-- When a user clicks this link, it will redirect him to the create method of post -->
+                </div>
+            @endcan
+
+            @can('update', $user->profile)
+                <div class="d-flex pt-3">
+                    <button><a href="/profile/{{ $user->users_id }}/edit">Edit Profile</a></button>
+                </div>
+            @endcan
         </div>
     </div>
     

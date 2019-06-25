@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreatePostsTable extends Migration
 {
     /**
@@ -19,11 +17,9 @@ class CreatePostsTable extends Migration
             $table->string('caption');
             $table->string('image');
             $table->timestamps();
-
             $table->index('user_users_id');
         });
     }
-
     /**
      * Reverse the migrations.
      *
