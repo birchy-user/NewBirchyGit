@@ -4,12 +4,18 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-4">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="rounded" style="max-width: 250px;">
+            <a href="/choose/{{ $user->users_id}}">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="rounded" style="max-width: 250px;">
+            </a>
         </div>
 
         <div class="col-9 pt-3 pl-5">
-            <div><h2><?php echo $user->username; ?></h2></div> <!-- Returns the user's username -->
-            <div><strong> {{ $user->posts->count() }} </strong>Posts</div>  <!-- Returns the count of a user's posts -->
+            <div class="d-flex"><h2><?php echo $user->username; ?></h2></div> <!-- Returns the user's username -->
+            @can('update', $user->profile)
+            <button class="d-flex"><a href="/delete-accs">Delete Account</a></button>
+            @endcan
+            
+            <div><strong> {{ $user->posts->count() }} </strong>Post(-s)</div>  <!-- Returns the count of a user's posts -->
             <div class="pt-4">{{ $user->profile->title }}</div>
             <div class="pt-4">{{ $user->profile->description }}</div>
 

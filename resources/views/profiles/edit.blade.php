@@ -5,7 +5,7 @@
 <form action="/profile/{{ $user->users_id }}" enctype="multipart/form-data" method="post">   <!-- Correct enc type for file upload + post method for sending data to post route-->
         @csrf   <!-- Generates a token that is used to verify that the authenticated user is the one actually making the requests to the application. (From Laravel Docs) -->
 
-        @method('PATCH') <!-- We use the method PATCH internally to  -->
+        @method('PATCH') 
 
 
         <div class="row">

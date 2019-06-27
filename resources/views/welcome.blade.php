@@ -60,7 +60,16 @@
             @if (Route::has('login'))
                 <div class="top-right links d-flex">
                     @auth
-                        <a href="{{ url('/home') }}">Your profile</a>
+                        <a href="{{ url('/profile/' . Auth::user()->users_id ) }}">Your profile</a>  <!-- url(/home) -->
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf <!-- Generates a token that is used to verify that the authenticated user is the one actually making the requests to the application. (From Laravel Docs) -->
+                                    </form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -76,14 +85,8 @@
                     BirchyGram
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="search-button">
+                    <button><a href="/search">Retrieve all users</a></button>
                 </div>
             </div>
         </div>

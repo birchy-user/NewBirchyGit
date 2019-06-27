@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 class ProfilesController extends Controller
 {
     public function index(\App\User $user)
@@ -34,5 +36,11 @@ class ProfilesController extends Controller
         auth()->user()->profile->update($data);
 
         return redirect('/profile/' . $user->users_id );
+    }
+
+    public function delete($id)
+    {
+        DB::table('profiles')->where('users_id', $id)->delete();
+        return view('/');
     }
 }
